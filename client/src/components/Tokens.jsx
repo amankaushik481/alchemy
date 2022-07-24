@@ -1,12 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { TransactionContext } from "../context/TransactionContext";
 
 const Tokens = () => {
   const { currentAccount } = useContext(TransactionContext);
   const [tokens, setTokens] = useState([]);
 
-  const getResult = async () => {
-    await fetch(
+  useEffect(() => {
+    fetch(
       `https://deep-index.moralis.io/api/v2/${currentAccount}/erc20?chain=rinkeby`,
       {
         headers: {
@@ -20,8 +20,7 @@ const Tokens = () => {
       .then((data) => {
         setTokens(data);
       });
-  };
-  getResult();
+  }, [currentAccount]);
 
   return (
     <>
