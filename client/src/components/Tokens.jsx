@@ -26,7 +26,7 @@ const Tokens = () => {
   return (
     <>
       <div className="flex flex-col special-bg">
-        <div className="overflow-x-auto sm:-mx-6">
+        <div className="overflow-x-auto">
           <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
             <div className="overflow-hidden">
               <table className="min-w-full text-center">
