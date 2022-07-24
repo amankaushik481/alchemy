@@ -25,23 +25,23 @@ const Tokens = () => {
 
   return (
     <>
-      <div className="flex flex-col">
-        <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+      <div className="flex flex-col special-bg">
+        <div className="overflow-x-auto sm:-mx-6">
           <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
             <div className="overflow-hidden">
               <table className="min-w-full text-center">
                 <thead className="border-b">
                   <tr>
-                    <th className="text-sm font-medium text-gray-900 px-6 py-4">
+                    <th className="text-sm font-medium text-white px-6 py-4">
                       Name
                     </th>
-                    <th className="text-sm font-medium text-gray-900 px-6 py-4">
+                    <th className="text-sm font-medium text-white px-6 py-4">
                       Symbol
                     </th>
-                    <th className="text-sm font-medium text-gray-900 px-6 py-4">
+                    <th className="text-sm font-medium text-white px-6 py-4">
                       Balance
                     </th>
-                    <th className="text-sm font-medium text-gray-900 px-6 py-4">
+                    <th className="text-sm font-medium text-white px-6 py-4">
                       Address
                     </th>
                   </tr>
@@ -50,16 +50,16 @@ const Tokens = () => {
                   {tokens.length > -1 &&
                     tokens.map((token) => (
                       <tr key={token.symbol} className="border-b">
-                        <td className="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
+                        <td className="text-sm text-white font-medium px-6 py-4 whitespace-nowrap">
                           {token.name}
                         </td>
-                        <td className="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
+                        <td className="text-sm text-white font-medium px-6 py-4 whitespace-nowrap">
                           {token.symbol}
                         </td>
-                        <td className="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
+                        <td className="text-sm text-white font-medium px-6 py-4 whitespace-nowrap">
                           {token.balance / 10 ** 18}
                         </td>
-                        <td className="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
+                        <td className="text-sm text-white font-medium px-6 py-4 whitespace-nowrap">
                           {token.token_address}
                         </td>
                       </tr>

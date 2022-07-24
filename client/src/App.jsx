@@ -13,8 +13,8 @@ const App = () => (
       <Navbar />
       <Welcome />
     </div>
-    <Services />
     <Tokens />
+    <Services />
     <Transactions />
     <Footer />
   </div>
