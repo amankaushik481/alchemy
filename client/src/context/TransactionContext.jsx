@@ -65,7 +65,10 @@ export const TransactionsProvider = ({ children }) => {
 
   const checkIfWalletIsConnect = async () => {
     try {
+      const provider = new ethers.providers.Web3Provider(ethereum);
+      const { chainId } = await provider.getNetwork();
       if (!ethereum) return alert("Please install MetaMask.");
+      if (chainId !== 4) return alert("Works on Rikeby Tesnet Only");
 
       const accounts = await ethereum.request({ method: "eth_accounts" });
 
