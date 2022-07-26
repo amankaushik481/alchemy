@@ -10,13 +10,13 @@ import {
 const App = () => (
   <div className="min-h-screen">
     <div className="gradient-bg-welcome">
-      <Navbar />
+      {/* <Navbar /> */}
       <Welcome />
     </div>
     <Tokens />
-    <Services />
+    {/* <Services /> */}
     <Transactions />
-    <Footer />
+    {/* <Footer /> */}
   </div>
 );
 

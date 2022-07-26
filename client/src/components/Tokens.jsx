@@ -28,26 +28,26 @@ const Tokens = () => {
         <div className="overflow-x-auto">
           <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
             <div className="overflow-hidden">
-              <table className="min-w-full text-center">
-                <thead className="border-b">
-                  <tr>
-                    <th className="text-sm font-medium text-white px-6 py-4">
-                      Name
-                    </th>
-                    <th className="text-sm font-medium text-white px-6 py-4">
-                      Symbol
-                    </th>
-                    <th className="text-sm font-medium text-white px-6 py-4">
-                      Balance
-                    </th>
-                    <th className="text-sm font-medium text-white px-6 py-4">
-                      Address
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {tokens.length > -1 &&
-                    tokens.map((token) => (
+              {tokens.length > -1 && (
+                <table className="min-w-full text-center">
+                  <thead className="border-b">
+                    <tr>
+                      <th className="text-sm font-medium text-white px-6 py-4">
+                        Name
+                      </th>
+                      <th className="text-sm font-medium text-white px-6 py-4">
+                        Symbol
+                      </th>
+                      <th className="text-sm font-medium text-white px-6 py-4">
+                        Balance
+                      </th>
+                      <th className="text-sm font-medium text-white px-6 py-4">
+                        Address
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {tokens.map((token) => (
                       <tr key={token.symbol} className="border-b">
                         <td className="text-sm text-white font-medium px-6 py-4 whitespace-nowrap">
                           {token.name}
@@ -63,8 +63,9 @@ const Tokens = () => {
                         </td>
                       </tr>
                     ))}
-                </tbody>
-              </table>
+                  </tbody>
+                </table>
+              )}
             </div>
           </div>
         </div>

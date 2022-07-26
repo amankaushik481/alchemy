@@ -4,6 +4,24 @@
   "sourceName": "contracts/Transactions.sol",
   "abi": [
     {
+      "inputs": [
+        {
+          "internalType": "address payable",
+          "name": "receiver",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "addToBlockchain",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
       "anonymous": false,
       "inputs": [
         {
@@ -26,53 +44,13 @@
         },
         {
           "indexed": false,
-          "internalType": "string",
-          "name": "message",
-          "type": "string"
-        },
-        {
-          "indexed": false,
           "internalType": "uint256",
           "name": "timestamp",
           "type": "uint256"
-        },
-        {
-          "indexed": false,
-          "internalType": "string",
-          "name": "keyword",
-          "type": "string"
         }
       ],
       "name": "Transfer",
       "type": "event"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address payable",
-          "name": "receiver",
-          "type": "address"
-        },
-        {
-          "internalType": "uint256",
-          "name": "amount",
-          "type": "uint256"
-        },
-        {
-          "internalType": "string",
-          "name": "message",
-          "type": "string"
-        },
-        {
-          "internalType": "string",
-          "name": "keyword",
-          "type": "string"
-        }
-      ],
-      "name": "addToBlockchain",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
     },
     {
       "inputs": [],
@@ -96,19 +74,9 @@
               "type": "uint256"
             },
             {
-              "internalType": "string",
-              "name": "message",
-              "type": "string"
-            },
-            {
               "internalType": "uint256",
               "name": "timestamp",
               "type": "uint256"
-            },
-            {
-              "internalType": "string",
-              "name": "keyword",
-              "type": "string"
             }
           ],
           "internalType": "struct Transactions.TransferStruct[]",
