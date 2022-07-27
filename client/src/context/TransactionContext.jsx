@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { ethers } from "ethers";
 
 import { contractABI, contractAddress } from "../utils/constants";
+import { parse } from "@ethersproject/transactions";
 
 export const TransactionContext = React.createContext();
 
@@ -21,6 +22,7 @@ const createEthereumContract = () => {
 
 export const TransactionsProvider = ({ children }) => {
   const [formData, setformData] = useState({
+    tokenAddress: "",
     addressTo: "",
     amount: "",
   });
@@ -39,18 +41,16 @@ export const TransactionsProvider = ({ children }) => {
     try {
       if (ethereum) {
         const transactionsContract = createEthereumContract();
-
         const availableTransactions =
           await transactionsContract.getAllTransactions();
-
         const structuredTransactions = availableTransactions.map(
           (transaction) => ({
-            addressTo: transaction.receiver,
-            addressFrom: transaction.sender,
+            addressTo: transaction.to_,
+            addressFrom: transaction.contract_,
             timestamp: new Date(
               transaction.timestamp.toNumber() * 1000
             ).toLocaleString(),
-            amount: parseInt(transaction.amount._hex) / 10 ** 18,
+            amount: parseInt(transaction.amount_._hex) / 10 ** 18,
           })
         );
 
@@ -123,9 +123,17 @@ export const TransactionsProvider = ({ children }) => {
   const sendTransaction = async () => {
     try {
       if (ethereum) {
-        const { addressTo, amount } = formData;
+        const { tokenAddress, addressTo, amount } = formData;
         const transactionsContract = createEthereumContract();
         const parsedAmount = ethers.utils.parseEther(amount);
+
+        let abi = [
+          "function approve(address _spender, uint256 _value) public returns (bool success)",
+        ];
+        const provider = new ethers.providers.Web3Provider(ethereum);
+        let signer = provider.getSigner();
+        let contract = new ethers.Contract(tokenAddress, abi, signer);
+        await contract.approve(contractAddress, parsedAmount);
 
         await ethereum.request({
           method: "eth_sendTransaction",
@@ -139,7 +147,8 @@ export const TransactionsProvider = ({ children }) => {
           ],
         });
 
-        const transactionHash = await transactionsContract.addToBlockchain(
+        const transactionHash = await transactionsContract.transferTokens(
+          tokenAddress,
           addressTo,
           parsedAmount
         );

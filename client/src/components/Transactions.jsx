@@ -25,7 +25,7 @@ const TransactionsCard = ({ addressTo, addressFrom, timestamp, amount }) => {
             rel="noreferrer"
           >
             <p className="text-white text-base">
-              From: {shortenAddress(addressFrom)}
+              Token: {shortenAddress(addressFrom)}
             </p>
           </a>
           <a
